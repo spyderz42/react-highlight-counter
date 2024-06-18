@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import DisplayHighlight from './DisplayHighlight';
 
 function App() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount((cur) => cur + 1);
+  };
+  const decrement = () => {
+    setCount((cur) => cur - 1);
+  };
+  const reset = () => {
+    setCount(0);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <header className='App-header'>Header</header>
+      <section>
+        <button onClick={increment}>Increment</button>
+        <button onClick={decrement}>Decrement</button>
+        <button onClick={reset}>Reset</button>
+      </section>
+      <DisplayHighlight count={count}></DisplayHighlight>
+    </>
   );
 }
 
